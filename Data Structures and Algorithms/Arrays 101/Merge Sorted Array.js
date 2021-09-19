@@ -10,7 +10,7 @@ var merge = function (nums1, m, nums2, n) {
     while (i < resultLen) {
         if (nums1[i] > nums2[j]) {
             for (let k = resultLen; k > i; k--) {
-                nums1[k] = nums1[k - 1]
+                nums1[k] = nums1[k - 1];
             }
             nums1[i] = nums2[j];
             j++;
@@ -21,10 +21,10 @@ var merge = function (nums1, m, nums2, n) {
 
     while (i < m + n) {
         nums1[i] = nums2[j];
-        j++;
         i++;
+        j++;
     }
-    return nums1;
+
 };
 
 console.log(merge([0], m = 0, [1], 1));
