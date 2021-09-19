@@ -24,7 +24,6 @@ var merge = function (nums1, m, nums2, n) {
         i++;
         j++;
     }
-
 };
 
-console.log(merge([0], m = 0, [1], 1));
+console.log(merge([0], 0, [1], 1));
