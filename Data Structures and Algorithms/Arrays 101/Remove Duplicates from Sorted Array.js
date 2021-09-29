@@ -3,19 +3,18 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-    let k = nums.length;
-    for (let i = 0; i < k - 1;) {
+    let numsLen = nums.length;
+    for (let i = 0; i < numsLen - 1;) {
         if (nums[i] === nums[i + 1]) {
-            for (let j = i + 1; j < k - 1; j++) {
+            for (let j = i + 1; j < numsLen - 1; j++) {
                 nums[j] = nums[j + 1];
             }
-            k--;
+            numsLen--;
         } else {
             i++;
         }
     }
-
-    return k;
+    return numsLen;
 };
 
-console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4]));
+console.log(removeDuplicates([1,1,2]));
