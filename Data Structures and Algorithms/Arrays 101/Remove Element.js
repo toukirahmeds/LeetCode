@@ -4,22 +4,22 @@
  * @return {number}
  */
 var removeElement = function (nums, val) {
-    let k = nums.length;
-    for (let i = 0; i < k;) {
-        if (nums[i] === val) {
-            if (i === k - 1) {
-                k--;
-            } else {
-                for (let j = i + 1; j < k; j++) {
-                    nums[j - 1] = nums[j];
-                }
-                k--;
-            }
-        } else {
-            i++;
+    const numsLen = nums.length;
+    let writeIndex = 0;
+    for (let readIndex = 0; readIndex < numsLen; readIndex++) {
+        if (nums[writeIndex] === val && nums[readIndex] !== val) {
+            [nums[writeIndex], nums[readIndex]] = [nums[readIndex], nums[writeIndex]]
+        }
+        if (nums[writeIndex] !== val) {
+            writeIndex++;
         }
     }
-    return k;
+    return writeIndex;
 };
 
-console.log(removeElement([0, 1, 2, 2, 3, 0, 4, 2], 2));
+console.log(removeElement([3, 2, 2, 3, 3, 3, 2, 2], 3));
+
+/**
+ * Time Complexity = O(n)
+ * Space Complexity = O(1)
+ */
