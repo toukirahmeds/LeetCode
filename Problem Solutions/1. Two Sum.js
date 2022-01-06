@@ -4,15 +4,23 @@
  * @return {number[]}
  */
 var twoSum = function (nums, target) {
-  const numsLen = nums.length;
-  for(let i = 0; i < numsLen - 1; i++) {
-    for(let j = i + 1; j < numsLen; j++) {
-      if(nums[i] + nums[j] === target) {
-        return [i, j];
-      }
+  const numsLen = nums.length,
+    mapObj = {};
+  for (let i = 0; i < numsLen; i++) {
+    mapObj[nums[i]] = i;
+  }
+
+  let diff;
+  for (let i = 0; i < numsLen - 1; i++) {
+    diff = target - nums[i];
+    if (mapObj.hasOwnProperty(diff) && mapObj[diff] !== i) {
+      return [i, mapObj[diff]];
     }
   }
 };
 
+console.log(twoSum([2, 7, 11, 15], 9));
 
-console.log(twoSum([3,3], 6))
+/**
+ * Time Complexity = O(n)
+ */
