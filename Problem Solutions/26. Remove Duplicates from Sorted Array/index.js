@@ -3,24 +3,32 @@
  * @return {number}
  */
 var removeDuplicates = function (nums) {
-  let numsLen = nums.length;
-  let current,
-    next,
-    i = 0;
-  while (i < numsLen) {
-    (current = nums[i]), (next = nums[i + 1]);
-    if (current === next) {
-      for (let k = i + 1; k < numsLen; k++) {
-        nums[k] = nums[k + 1];
+  let total = nums.length;
+  let i = 0,
+    j;
+  while (i < total - 1) {
+    j = i + 1;
+    while (nums[i] === nums[j] && j < total) {
+      j++;
+      total--;
+    }
+    if (i + 1 !== j) {
+      for (let k = i + 1; k < total; k++) {
+        nums[k] = nums[j++];
       }
-      numsLen--;
-    } else {
+    }
+
+    if (nums[i] !== nums[i + 1]) {
       i++;
     }
   }
-  return numsLen;
+  return total;
 };
 
+console.log(
+  removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5])
+);
+
 /**
- * Time Complexity = O(n^2), where n is the number of items in the `nums` array.
+ * Time Complexity = O(nlogn), where n is the number of items in the `nums` array.
  */
