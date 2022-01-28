@@ -10,20 +10,12 @@ var strStr = function (haystack, needle) {
     return -1;
   }
 
-  let matched = false;
   for (let i = 0; i < haystack.length; i++) {
-    if (haystack[i] === needle[0]) {
-      matched = true;
-      for (let j = 1; j < needle.length; j++) {
-        if (haystack[i + j] !== needle[j]) {
-          matched = false;
-          break;
-        }
-      }
-
-      if (matched) {
-        return i;
-      }
+    if (
+      haystack[i] === needle[0] &&
+      haystack.slice(i, i + needle.length).localeCompare(needle) === 0
+    ) {
+      return i;
     }
   }
 
@@ -31,5 +23,5 @@ var strStr = function (haystack, needle) {
 };
 
 /**
- * Time Complexity = O(n^2), where n is the length of the `haystack` string
+ * Time Complexity = O(nlogn), where n is the length of the `haystack` string
  */
